@@ -27,6 +27,22 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
 }
+
+java {
+    sourceCompatibility = 1.8 // java 8
+    targetCompatibility = 1.8
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
 //fixme uncomment this for print deprecation info
 //tasks.withType(JavaCompile) {
 //    options.compilerArgs =
