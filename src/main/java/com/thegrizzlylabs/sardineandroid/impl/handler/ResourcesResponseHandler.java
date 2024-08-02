@@ -1,7 +1,5 @@
 package com.thegrizzlylabs.sardineandroid.impl.handler;
 
-import android.util.Log;
-
 import com.thegrizzlylabs.sardineandroid.DavResource;
 import com.thegrizzlylabs.sardineandroid.model.Multistatus;
 
@@ -9,6 +7,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import okhttp3.Response;
 
@@ -29,7 +29,7 @@ public class ResourcesResponseHandler implements ResponseHandler<List<DavResourc
             try {
                 resources.add(new DavResource(davResponse));
             } catch (URISyntaxException e) {
-                Log.w(TAG, String.format("Ignore resource with invalid URI %s", davResponse.getHref()/*.get(0)*/));
+                Logger.getGlobal().log(Level.WARNING, String.format("Ignore resource with invalid URI %s", davResponse.getHref()/*.get(0)*/));
             }
         }
         return resources;

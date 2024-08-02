@@ -1,7 +1,5 @@
 package com.thegrizzlylabs.sardineandroid.impl;
 
-import android.text.TextUtils;
-
 import com.thegrizzlylabs.sardineandroid.DavAce;
 import com.thegrizzlylabs.sardineandroid.DavAcl;
 import com.thegrizzlylabs.sardineandroid.DavPrincipal;
@@ -315,7 +313,7 @@ public class OkHttpSardine implements Sardine {
         if (expectContinue) {
             headersBuilder.add("Expect", "100-Continue");
         }
-        if (!TextUtils.isEmpty(lockToken)) {
+        if (lockToken != null && !lockToken.isEmpty()) {
             addLockTokenToHeaders(headersBuilder, url, lockToken);
         }
         put(url, requestBody, headersBuilder.build());
